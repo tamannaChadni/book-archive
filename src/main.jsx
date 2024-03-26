@@ -38,6 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/quotes",
         element: <Quotes></Quotes>,
+        loader: () => fetch("book.json"),
       },
       {
         path: "/review",

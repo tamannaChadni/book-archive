@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import QuoteCard from "../QuoteCard/QuoteCard";
+import { useLoaderData } from "react-router-dom";
 
 const Quotes = () => {
-    return (
-        <div>
-            <h2>quotes</h2>
-        </div>
-    );
+  const books = useLoaderData();
+  return (
+    <div className="container mx-auto mt-4 grid grid-cols-3 ">
+      {books.map((book) => (
+        <QuoteCard key={book.id} book={book}></QuoteCard>
+      ))}
+    </div>
+  );
 };
 
 export default Quotes;
