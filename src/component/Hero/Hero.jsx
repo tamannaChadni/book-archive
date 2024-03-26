@@ -1,5 +1,6 @@
 import React from "react";
 import cover from "../../assets/cover.jpg";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -11,9 +12,12 @@ const Hero = () => {
             {" "}
             There is nothing better <br /> than to read
           </h1>
+          <Link to="/listed-book">
           <button className="btn bg-lime-500 mt-4 text-white">
             View The List
           </button>
+          </Link>
+          
         </div>
       </div>
     </div>
