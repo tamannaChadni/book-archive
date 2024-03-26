@@ -20,34 +20,32 @@ const router = createBrowserRouter([
   // },
   {
     path: "/",
-    element: <MainLayout>
-    </MainLayout>,
-    children:[
-       {
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
         index: true,
-        element:<Home></Home>,
-        loader:()=>fetch('book.json'),
-       },
-       {
+        element: <Home></Home>,
+        loader: () => fetch("book.json"),
+      },
+      {
         path: "/listed-book",
-        element: <SortedBook></SortedBook>
+        element: <SortedBook></SortedBook>,
       },
       {
         path: "/page-to-read",
-        element:<Graph></Graph>,
+        element: <Graph></Graph>,
       },
       {
         path: "/quotes",
-        element:<Quotes></Quotes> ,
+        element: <Quotes></Quotes>,
       },
       {
         path: "/review",
         element: <Review></Review>,
+        loader: () => fetch("book.json"),
       },
-    ]
+    ],
   },
-  
-  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
