@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -25,42 +26,97 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Home</a>
-            </li>
-            <li>
-              <a>Listed Books</a>
-            </li>
-            <li>
-              <a>Pages to Read</a>
-            </li>
-            <li>
-              <a>Quote</a>
-            </li>
-            <li>
-              <a>Review</a>
-            </li>
+            <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/listed-book"
+          >
+            Listed Books
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/page-to-read"
+          >
+            Pages to Read
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/quotes"
+          >
+            Quote
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/review"
+          >
+            Review
+          </NavLink>
           </ul>
         </div>
-        <a className="btn btn-ghost text-3xl font-bold">Book Archive</a>
+        {/* <a className="btn btn-ghost text-3xl font-bold">Book Archive</a> */}
+        <a className="btn btn-ghost text-3xl font-boldtext-2xl font-bold bg-gradient-to-r from-lime-500 via-yellow-500 to-green-400 text-transparent bg-clip-text animate-gradient">
+          Book Archive
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Home</a>
-          </li>
-          <li>
-            <a>Listed Books</a>
-          </li>
-          <li>
-            <a>Pages to Read</a>
-          </li>
-          <li>
-            <a>Quote</a>
-          </li>
-          <li>
-            <a>Review</a>
-          </li>
+        <ul className="menu menu-horizontal px-1 gap-3">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/listed-book"
+          >
+            Listed Books
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/page-to-read"
+          >
+            Pages to Read
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/quotes"
+          >
+            Quote
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "text-lime-500 font-bold" : "font-normal"
+            }
+            to="/review"
+          >
+            Review
+          </NavLink>
         </ul>
       </div>
       <div className="navbar-end gap-2">
