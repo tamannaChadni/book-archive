@@ -3,16 +3,6 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
 
-// import {
-//   BarChart,
-//   Bar,
-//   Rectangle,
-//   XAxis,
-//   YAxis,
-//   Tooltip,
-//   Legend,
-// } from "recharts";
-
 const Graph = () => {
   const books = [
     {
@@ -126,34 +116,7 @@ const Graph = () => {
   return (
     <div className="container mx-auto mt-4">
       
-      {/* <BarChart
-        width={1300}
-        height={600}
-        data={books}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        
-        <XAxis dataKey="bookName" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar
-          dataKey="bookId"
-          fill="#8884d8"
-          activeBar={<Rectangle fill="pink" stroke="blue" />}
-        />
-        <Bar
-          dataKey="totalPages"
-          fill="#82ca9d"
-          activeBar={<Rectangle fill="gold" stroke="purple" />}
-        />
-      </BarChart> */}
-
+     
 <BarChart
       width={1300}
       height={600}
