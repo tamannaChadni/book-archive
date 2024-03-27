@@ -1,9 +1,9 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 const QuoteCard = ({ book }) => {
   const { author, quote } = book;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl my-4 ">
+    <div className="card lg:w-96 bg-base-100 shadow-xl my-4 ">
       <div className="card-body">
         <div className="card-actions justify-end">
           <button className="btn btn-rounded btn-sm">
@@ -15,6 +15,9 @@ const QuoteCard = ({ book }) => {
       </div>
     </div>
   );
+};
+QuoteCard.propTypes = {
+  book: PropTypes.object.isRequired,
 };
 
 export default QuoteCard;

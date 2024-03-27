@@ -4,12 +4,7 @@ import SingleBook from "../SingleBook/SingleBook";
 
 const Books = () => {
   const books = useLoaderData();
-  // books.map((b) => {
-  //   console.log("========" + b.bookId);
-  // });
-  // console.log("========" + books);
-
-  //
+ 
   return (
     <div className="container mx-auto mt-4 ">
       <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">

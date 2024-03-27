@@ -1,5 +1,4 @@
 import React from 'react';
-// import Home from '../../Pages/Home';
 import {Outlet} from 'react-router-dom'
 import Navbar from '../Navbar/Navbar';
 

@@ -3,14 +3,10 @@ import { useLoaderData, useParams } from "react-router-dom";
 
 const BookDetails = () => {
   const books = useLoaderData();
-  console.log(books);
+
   const { bookId } = useParams();
-  console.log(useParams);
-  console.log(bookId);
 
   const perBooks = books.find((b) => b.bookId == bookId);
-  console.log("-----------" + useLoaderData());
-  console.log("---------prebook--" + perBooks);
 
   const {
     image,
@@ -25,19 +21,6 @@ const BookDetails = () => {
     rating,
   } = perBooks;
 
-  // ------------------------------------
-  // const {
-  //   image,
-  //   author,
-  //   bookName,
-  //   review,
-  //   category,
-  //   tags,
-  //   totalPages,
-  //   publisher,
-  //   yearOfPublishing,
-  //   rating,
-  // } = book;
   return (
     <div className="container mx-auto mt-4">
       <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -49,23 +32,36 @@ const BookDetails = () => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{bookName}</h2>
-          <p>{author}</p>
-          <p>{category}</p>
-          <p>{review}</p>
-          <div className="gap-3">
+          <h2 className="card-title font-bold text-2xl">{bookName}</h2>
+          <p className=" font-extralight">By: {author}</p>
+          <hr />
+          <p className=" font-light">{category}</p>
+          <hr />
+          <p className="font-semibold">Review : {review}</p>
+          <div className="flex gap-3 text-lime-500">
             {tags.map((tag, idx) => (
               <span key={idx}>{tag}</span>
             ))}
           </div>
           <hr />
-          <p>Number of Pages: {totalPages}</p>
-          <p>Publisher:{publisher}</p>
-          <p>year of publish :{yearOfPublishing}</p>
-          <p>Rating: {rating}</p>
+          <p className="font-semibold">
+            Number of Pages :{" "}
+            <span className="text-lime-500">{totalPages}</span>
+          </p>
+          <p className="font-semibold">
+            Publisher: <span className="text-lime-500">{publisher}</span>{" "}
+          </p>
+          <p className="font-semibold">
+            year of publish :{" "}
+            <span className="text-lime-500">{yearOfPublishing}</span>{" "}
+          </p>
+          <p className="font-semibold">
+            rateing : <span className="text-lime-500">{rating}</span>{" "}
+          </p>
+
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Read</button>
-            <button className="btn btn-primary">Wishlist</button>
+            <button className="btn  bg-lime-600 text-white">Read</button>
+            <button className="btn  bg-blue-400 text-white">Wishlist</button>
           </div>
         </div>
       </div>

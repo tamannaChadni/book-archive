@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 const Quotes = () => {
   const books = useLoaderData();
   return (
-    <div className="container mx-auto mt-4 grid grid-cols-3 ">
+    <div className="container lg:mx-auto mt-4 grid grid-cols-1 lg:grid-cols-3 ">
       {books.map((book) => (
         <QuoteCard key={book.id} book={book}></QuoteCard>
       ))}
