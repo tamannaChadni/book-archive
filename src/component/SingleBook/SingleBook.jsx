@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaRegStar } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const SingleBook = ({ book }) => {
   const { bookId, bookName, author, image, category, rating, tags } = book;
   return (
     <article className="flex flex-col dark:bg-gray-50">
-      <Link to={bookId}>
+      <Link to={`/book/${bookId}`}>
         <img
           alt=""
           className="object-cover w-full h-52 dark:bg-gray-500"
@@ -40,5 +41,10 @@ const SingleBook = ({ book }) => {
     </article>
   );
 };
+
+SingleBook.propTypes = {
+  book: PropTypes.object.isRequired,
+};
+
 
 export default SingleBook;

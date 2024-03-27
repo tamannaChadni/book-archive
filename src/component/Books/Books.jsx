@@ -2,10 +2,12 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleBook from "../SingleBook/SingleBook";
 
-
 const Books = () => {
   const books = useLoaderData();
-  // console.log(books);
+  // books.map((b) => {
+  //   console.log("========" + b.bookId);
+  // });
+  // console.log("========" + books);
 
   //
   return (
@@ -20,7 +22,7 @@ const Books = () => {
           </div>
           <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
             {books.map((book) => (
-              <SingleBook key={book.id} book={book}></SingleBook>
+              <SingleBook key={book.bookId} book={book}></SingleBook>
             ))}
           </div>
         </div>

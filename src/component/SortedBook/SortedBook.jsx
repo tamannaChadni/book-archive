@@ -2,8 +2,8 @@ import React from "react";
 
 const SortedBook = () => {
   return (
-    <div>
-      <div>
+    <div className="container mt-4">
+      <div className="texy-center bg-slate-400 h-">
         <h1>Books</h1>
 
         <button className="mt-5">Sort By</button>
