@@ -6,41 +6,54 @@ import "react-toastify/dist/ReactToastify.css";
 const BookDetails = () => {
   const books = useLoaderData();
   const { bookId } = useParams();
+  // const [readOrWishListed, setReadOrWishListed] = useState([]);
   const perBooks = books.find((b) => b.bookId == bookId);
-  
+
   // readbook
   const handleReadBook = () => {
-    const saveReadBook = JSON.parse(localStorage.getItem("books")) || [];
+    const saveReadBook = JSON.parse(localStorage.getItem("readBooks")) || [];
     const readBook = saveReadBook.find(
       (book) => book.bookId == perBooks.bookId
     );
-    
-    if (readBook) {
+    console.log(readBook);
+    const saveWishList =
+      JSON.parse(localStorage.getItem("wishListBooks")) || [];
+    const wishListBook = saveWishList.find(
+      (book) => book.bookId == perBooks.bookId
+    );
+    console.log(wishListBook);
+
+    if (readBook || wishListBook) {
       toast.warn("cannot added again");
     } else {
       saveReadBook.push(perBooks);
       const localBook = JSON.stringify(saveReadBook);
       console.log("perbook====" + localBook);
-      localStorage.setItem("books", localBook);
-      toast("One book added !");
+      localStorage.setItem("readBooks", localBook);
+      toast.info("One book added !");
     }
   };
 
   // wishlist
 
   const handleWishList = () => {
-    const saveWishList = JSON.parse(localStorage.getItem("books") || []);
+    const saveReadBook = JSON.parse(localStorage.getItem("readBooks")) || [];
+    const readBook = saveReadBook.find(
+      (book) => book.bookId == perBooks.bookId
+    );
+    const saveWishList =
+      JSON.parse(localStorage.getItem("wishListBooks")) || [];
     const wishListBook = saveWishList.find(
       (book) => book.bookId == perBooks.bookId
     );
 
-    if (wishListBook) {
+    if (wishListBook || readBook) {
       toast.warn("cannot added again");
     } else {
       saveWishList.push(perBooks);
       const localBook = JSON.stringify(saveWishList);
-      localStorage.setItem("books", localBook);
-      toast("already added !");
+      localStorage.setItem("wishListBooks", localBook);
+      toast.info("one book added!");
     }
   };
 

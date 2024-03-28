@@ -11,6 +11,7 @@ import MainLayout from "./component/Layout/MainLayout";
 import Home from "./Pages/Home";
 import BookDetails from "./component/BookDetails/BookDetails";
 import ErrorPage from "./component/ErrorPage/ErrorPage";
+import Wishlist from "./component/Wishlist/Wishlist";
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
         path: "/listed-book",
         element: <SortedBook></SortedBook>,
         loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
+      },
+      {
+        path: "/listed-book",
+        element: <Wishlist></Wishlist>,
+        // loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
       },
       {
         path: "/page-to-read",

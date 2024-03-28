@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReadBook from "../ReadBook/ReadBook";
 import { Link } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
+import Wishlist from "../Wishlist/Wishlist";
 
 const SortedBook = () => {
   const books = useLoaderData();
@@ -9,11 +10,15 @@ const SortedBook = () => {
   console.log("kkkk", bookDescending);
 
   const [readBooked, setReadBooked] = useState([]);
+  const [wishListBookes, setWishListBookes] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
-    const getReadBook = JSON.parse(localStorage.getItem("books")) || [];
+    const getReadBook = JSON.parse(localStorage.getItem("readBooks")) || [];
     setReadBooked(getReadBook);
+    const getWishListBook =
+      JSON.parse(localStorage.getItem("wishListBooks")) || [];
+    setWishListBookes(getWishListBook);
   }, []);
 
   const handleRatingSort = () => {
@@ -25,7 +30,9 @@ const SortedBook = () => {
     // setReadBooked(numAscending);
   };
   const handlePubYearSort = () => {
-    setReadBooked([...readBooked].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing));
+    setReadBooked(
+      [...readBooked].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing)
+    );
     // setReadBooked(numAscending);
   };
 
@@ -87,7 +94,7 @@ const SortedBook = () => {
             <span>Read Book</span>
           </Link>
           <Link
-            to={`wishList`}
+            to="/listed-book/wishlist"
             onClick={() => setTabIndex(1)}
             className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabIndex === 1 ? "border border-b-0" : "border-b"
@@ -114,6 +121,10 @@ const SortedBook = () => {
       <div className="mt-4">
         {readBooked.map((read, idx) => (
           <ReadBook key={idx} read={read}></ReadBook>
+        ))}
+
+        {wishListBookes.map((wish, idx) => (
+          <Wishlist key={idx} wish={wish}></Wishlist>
         ))}
       </div>
     </div>

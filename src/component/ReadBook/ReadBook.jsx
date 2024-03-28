@@ -65,7 +65,7 @@ const ReadBook = ({ read }) => {
   );
 };
 ReadBook.propTypes = {
-  read: PropTypes.array,
+  read: PropTypes.object,
 };
 
 export default ReadBook;
