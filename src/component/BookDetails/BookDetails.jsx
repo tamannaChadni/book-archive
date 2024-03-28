@@ -1,12 +1,46 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BookDetails = () => {
   const books = useLoaderData();
-
   const { bookId } = useParams();
-
   const perBooks = books.find((b) => b.bookId == bookId);
+
+// readbook
+  const handleReadBook = () => {
+    const saveReadBook = JSON.parse(localStorage.getItem("books")) || [];
+    const readBook = saveReadBook.find(
+      (book) => book.bookId == perBooks.bookId
+    );
+
+    if (readBook) {
+      toast.warn("cannot added again");
+    } else {
+      saveReadBook.push(perBooks);
+      const localBook = JSON.stringify(saveReadBook);
+      localStorage.setItem("books", localBook);
+      toast("One book added !");
+    }
+  };
+
+  // wishlist
+
+  const handleWishList = () =>{
+        const saveWishList = JSON.parse(localStorage.getItem("books") || []);
+        const wishListBook = saveWishList.find((book) => book.bookId == perBooks.bookId);
+
+
+        if (wishListBook) {
+          toast.warn("cannot added again");
+        } else {
+          saveWishList.push(perBooks);
+          const localBook = JSON.stringify(saveWishList);
+          localStorage.setItem("books", localBook);
+          toast("already added !");
+        }
+      }
 
   const {
     image,
@@ -60,11 +94,17 @@ const BookDetails = () => {
           </p>
 
           <div className="card-actions justify-end">
-            <button className="btn  bg-lime-600 text-white">Read</button>
-            <button className="btn  bg-blue-400 text-white">Wishlist</button>
+            <button
+              onClick={handleReadBook}
+              className="btn  bg-lime-600 text-white"
+            >
+              Read
+            </button>
+            <button onClick={handleWishList} className="btn  bg-blue-400 text-white">Wishlist</button>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

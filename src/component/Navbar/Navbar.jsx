@@ -27,49 +27,52 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-lime-500 font-bold" : "font-normal"
-            }
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-lime-500 font-bold" : "font-normal"
-            }
-            to="/listed-book"
-          >
-            Listed Books
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-lime-500 font-bold" : "font-normal"
-            }
-            to="/page-to-read"
-          >
-            Pages to Read
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-lime-500 font-bold" : "font-normal"
-            }
-            to="/quotes"
-          >
-            Quote
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-lime-500 font-bold" : "font-normal"
-            }
-            to="/review"
-          >
-            Review
-          </NavLink>
+              className={({ isActive }) =>
+                isActive ? "text-lime-500 font-bold" : "font-normal"
+              }
+              to="/"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-lime-500 font-bold" : "font-normal"
+              }
+              to="/listed-book"
+            >
+              Listed Books
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-lime-500 font-bold" : "font-normal"
+              }
+              to="/page-to-read"
+            >
+              Pages to Read
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-lime-500 font-bold" : "font-normal"
+              }
+              to="/quotes"
+            >
+              Quote
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-lime-500 font-bold" : "font-normal"
+              }
+              to="/review"
+            >
+              Review
+            </NavLink>
           </ul>
         </div>
-       
-        <Link to='/' className="btn btn-ghost text-3xl font-boldtext-2xl font-bold bg-gradient-to-r from-lime-500 via-yellow-500 to-green-400 text-transparent bg-clip-text animate-gradient">
+
+        <Link
+          to="/"
+          className="btn btn-ghost text-3xl font-boldtext-2xl font-bold bg-gradient-to-r from-lime-500 via-yellow-500 to-green-400 text-transparent bg-clip-text animate-gradient"
+        >
           Book Archive
         </Link>
       </div>
@@ -120,8 +123,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-2">
-        <a className="btn bg-lime-500 text-white">Sign In</a>
-        <a className="btn bg-yellow-500 text-white">Sign Up</a>
+        <button className="btn bg-lime-500 text-white hidden lg:block">
+          Sign In
+        </button>
+        <button className="btn bg-yellow-500 text-white">Sign Up</button>
       </div>
     </div>
   );
