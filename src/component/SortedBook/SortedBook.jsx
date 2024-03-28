@@ -16,7 +16,19 @@ const SortedBook = () => {
     setReadBooked(getReadBook);
   }, []);
 
-  
+  const handleRatingSort = () => {
+    setReadBooked([...readBooked].sort((a, b) => b.rating - a.rating));
+    // setReadBooked(numAscending);
+  };
+  const handleNumOfPagesSort = () => {
+    setReadBooked([...readBooked].sort((a, b) => b.totalPages - a.totalPages));
+    // setReadBooked(numAscending);
+  };
+  const handlePubYearSort = () => {
+    setReadBooked([...readBooked].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing));
+    // setReadBooked(numAscending);
+  };
+
   return (
     <div className="container mx-auto mt-4">
       <div className=" text-center bg-slate-200 h-10  rounded-lg p-2">
@@ -38,13 +50,13 @@ const SortedBook = () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Rating</a>
+              <a onClick={handleRatingSort}>Rating</a>
             </li>
             <li>
-              <a>Number of pages</a>
+              <a onClick={handleNumOfPagesSort}>Number of pages</a>
             </li>
             <li>
-              <a>Publisher year</a>
+              <a onClick={handlePubYearSort}>Publisher year</a>
             </li>
           </ul>
         </div>
@@ -54,7 +66,7 @@ const SortedBook = () => {
       <div className="mt-7">
         <div className="flex items-center overflow-x-auto overflow-y-hidden sm:justify-start flex-nowrap ">
           <Link
-            to='/listed-book'
+            to="/listed-book"
             onClick={() => setTabIndex(0)}
             className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabIndex === 0 ? "border border-b-0" : "border-b"
