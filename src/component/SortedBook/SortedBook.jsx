@@ -16,7 +16,7 @@ const SortedBook = () => {
     setReadBooked(getReadBook);
   }, []);
 
-  console.log("==========" + readBooked);
+  
   return (
     <div className="container mx-auto mt-4">
       <div className=" text-center bg-slate-200 h-10  rounded-lg p-2">
@@ -54,7 +54,7 @@ const SortedBook = () => {
       <div className="mt-7">
         <div className="flex items-center overflow-x-auto overflow-y-hidden sm:justify-start flex-nowrap ">
           <Link
-            to={`read`}
+            to='/listed-book'
             onClick={() => setTabIndex(0)}
             className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabIndex === 0 ? "border border-b-0" : "border-b"

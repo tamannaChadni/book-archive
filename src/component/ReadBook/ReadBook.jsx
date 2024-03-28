@@ -6,12 +6,8 @@ import { SiAffinitypublisher } from "react-icons/si";
 import { LuMapPin } from "react-icons/lu";
 import { MdOutlinePeopleOutline } from "react-icons/md";
 
-
-
-
-
-const ReadBook = (books) => {
-  console.log("==========-----" + books.bookName);
+const ReadBook = ({ read }) => {
+  
   const {
     bookName,
     author,
@@ -21,7 +17,7 @@ const ReadBook = (books) => {
     category,
     publisher,
     yearOfPublishing,
-  } = books;
+  } = read;
   // console.log(books);
   return (
     <div>
@@ -30,16 +26,27 @@ const ReadBook = (books) => {
           <img src={image} alt="Movie" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title font-bold">Title : <span className=" text-lime-400">{bookName}</span> </h2>
-          <div className=" font-medium flex gap-2 items-center"><MdOutlinePeopleOutline />
- Author : <span className=" text-lime-400">{author}</span> </div>
+          <h2 className="card-title font-bold">
+            Title : <span className=" text-lime-400">{bookName}</span>{" "}
+          </h2>
+          <div className=" font-medium flex gap-2 items-center">
+            <MdOutlinePeopleOutline />
+            Author : <span className=" text-lime-400">{author}</span>{" "}
+          </div>
           {/* <p>Tag : </p> */}
-          <div className="font-medium flex gap-2 items-center"> <LuMapPin />
- Year :  <span className=" text-lime-400">{yearOfPublishing}</span></div>
-          <div className="font-medium flex gap-2 items-center"><SiAffinitypublisher />
-  Publisher :<span className=" text-lime-400">{publisher}</span> </div>
-          <div className="font-medium flex gap-2 items-center"><MdOutlineContactPage />
- Page :<span className=" text-lime-400">{totalPages}</span> </div>
+          <div className="font-medium flex gap-2 items-center">
+            {" "}
+            <LuMapPin />
+            Year : <span className=" text-lime-400">{yearOfPublishing}</span>
+          </div>
+          <div className="font-medium flex gap-2 items-center">
+            <SiAffinitypublisher />
+            Publisher :<span className=" text-lime-400">{publisher}</span>{" "}
+          </div>
+          <div className="font-medium flex gap-2 items-center">
+            <MdOutlineContactPage />
+            Page :<span className=" text-lime-400">{totalPages}</span>{" "}
+          </div>
 
           <div className="card-actions justify- start">
             <button className="btn  bg-blue-300 text-white">
@@ -58,7 +65,7 @@ const ReadBook = (books) => {
   );
 };
 ReadBook.propTypes = {
-  books: PropTypes.array,
+  read: PropTypes.array,
 };
 
 export default ReadBook;

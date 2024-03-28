@@ -7,19 +7,20 @@ const BookDetails = () => {
   const books = useLoaderData();
   const { bookId } = useParams();
   const perBooks = books.find((b) => b.bookId == bookId);
-
-// readbook
+  
+  // readbook
   const handleReadBook = () => {
     const saveReadBook = JSON.parse(localStorage.getItem("books")) || [];
     const readBook = saveReadBook.find(
       (book) => book.bookId == perBooks.bookId
     );
-
+    
     if (readBook) {
       toast.warn("cannot added again");
     } else {
       saveReadBook.push(perBooks);
       const localBook = JSON.stringify(saveReadBook);
+      console.log("perbook====" + localBook);
       localStorage.setItem("books", localBook);
       toast("One book added !");
     }
@@ -27,20 +28,21 @@ const BookDetails = () => {
 
   // wishlist
 
-  const handleWishList = () =>{
-        const saveWishList = JSON.parse(localStorage.getItem("books") || []);
-        const wishListBook = saveWishList.find((book) => book.bookId == perBooks.bookId);
+  const handleWishList = () => {
+    const saveWishList = JSON.parse(localStorage.getItem("books") || []);
+    const wishListBook = saveWishList.find(
+      (book) => book.bookId == perBooks.bookId
+    );
 
-
-        if (wishListBook) {
-          toast.warn("cannot added again");
-        } else {
-          saveWishList.push(perBooks);
-          const localBook = JSON.stringify(saveWishList);
-          localStorage.setItem("books", localBook);
-          toast("already added !");
-        }
-      }
+    if (wishListBook) {
+      toast.warn("cannot added again");
+    } else {
+      saveWishList.push(perBooks);
+      const localBook = JSON.stringify(saveWishList);
+      localStorage.setItem("books", localBook);
+      toast("already added !");
+    }
+  };
 
   const {
     image,
@@ -100,7 +102,12 @@ const BookDetails = () => {
             >
               Read
             </button>
-            <button onClick={handleWishList} className="btn  bg-blue-400 text-white">Wishlist</button>
+            <button
+              onClick={handleWishList}
+              className="btn  bg-blue-400 text-white"
+            >
+              Wishlist
+            </button>
           </div>
         </div>
       </div>
