@@ -73,7 +73,7 @@ const SortedBook = () => {
       <div className="mt-7">
         <div className="flex items-center overflow-x-auto overflow-y-hidden sm:justify-start flex-nowrap ">
           <Link
-            to="/listed-book"
+            to={`/listed-book/readbook`}
             onClick={() => setTabIndex(0)}
             className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabIndex === 0 ? "border border-b-0" : "border-b"
@@ -94,7 +94,7 @@ const SortedBook = () => {
             <span>Read Book</span>
           </Link>
           <Link
-            to="/listed-book/wishlist"
+            to={`/listed-book/wishlist`}
             onClick={() => setTabIndex(1)}
             className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabIndex === 1 ? "border border-b-0" : "border-b"

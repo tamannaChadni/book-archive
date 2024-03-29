@@ -12,34 +12,53 @@ import Home from "./Pages/Home";
 import BookDetails from "./component/BookDetails/BookDetails";
 import ErrorPage from "./component/ErrorPage/ErrorPage";
 import Wishlist from "./component/Wishlist/Wishlist";
-
+import ReadBook from "./component/ReadBook/ReadBook";
 
 const router = createBrowserRouter([
-  
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
+        loader: () =>
+          fetch("https://tamannachadni.github.io/book-json-hosting/book.json"),
       },
       {
         path: "/book/:bookId",
         element: <BookDetails></BookDetails>,
-        loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
+        loader: () =>
+          fetch("https://tamannachadni.github.io/book-json-hosting/book.json"),
       },
       {
         path: "/listed-book",
         element: <SortedBook></SortedBook>,
-        loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
+        loader: () =>
+          fetch("https://tamannachadni.github.io/book-json-hosting/book.json"),
+        children: [
+          {
+            path: "/listed-book/readbook",
+            element: <ReadBook></ReadBook>,
+            loader: () =>
+              fetch(
+                "https://tamannachadni.github.io/book-json-hosting/book.json"
+              ),
+          },
+          {
+            path: "/listed-book/wishlist",
+            element: <Wishlist></Wishlist>,
+            loader: () =>
+              fetch(
+                "https://tamannachadni.github.io/book-json-hosting/book.json"
+              ),
+          },
+        ],
       },
       {
-        path: "/listed-book",
+        path: "/listed-book/wishlist",
         element: <Wishlist></Wishlist>,
-        // loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
       },
       {
         path: "/page-to-read",
@@ -48,12 +67,14 @@ const router = createBrowserRouter([
       {
         path: "/quotes",
         element: <Quotes></Quotes>,
-        loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
+        loader: () =>
+          fetch("https://tamannachadni.github.io/book-json-hosting/book.json"),
       },
       {
         path: "/review",
         element: <Review></Review>,
-        loader: () => fetch('https://tamannachadni.github.io/book-json-hosting/book.json'),
+        loader: () =>
+          fetch("https://tamannachadni.github.io/book-json-hosting/book.json"),
       },
     ],
   },
