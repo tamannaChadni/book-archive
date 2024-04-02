@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 const BookDetails = () => {
   const books = useLoaderData();
   const { bookId } = useParams();
-  // const [readOrWishListed, setReadOrWishListed] = useState([]);
   const perBooks = books.find((b) => b.bookId == bookId);
 
   // readbook
@@ -15,22 +14,21 @@ const BookDetails = () => {
     const readBook = saveReadBook.find(
       (book) => book.bookId == perBooks.bookId
     );
-    console.log(readBook);
-    const saveWishList =
-      JSON.parse(localStorage.getItem("wishListBooks")) || [];
+    // console.log(readBook);
+    const saveWishList = JSON.parse(localStorage.getItem("wishListBooks")) || [];
     const wishListBook = saveWishList.find(
       (book) => book.bookId == perBooks.bookId
     );
-    console.log(wishListBook);
+    
 
-    if (readBook || wishListBook) {
+    if (readBook && wishListBook) {
       toast.warn("cannot added again");
     } else {
       saveReadBook.push(perBooks);
       const localBook = JSON.stringify(saveReadBook);
-      console.log("perbook====" + localBook);
+      
       localStorage.setItem("readBooks", localBook);
-      toast.info("One book added !");
+      toast("One book added !");
     }
   };
 
@@ -41,8 +39,8 @@ const BookDetails = () => {
     const readBook = saveReadBook.find(
       (book) => book.bookId == perBooks.bookId
     );
-    const saveWishList =
-      JSON.parse(localStorage.getItem("wishListBooks")) || [];
+
+    const saveWishList = JSON.parse(localStorage.getItem("wishListBooks")) || [];
     const wishListBook = saveWishList.find(
       (book) => book.bookId == perBooks.bookId
     );
@@ -53,7 +51,7 @@ const BookDetails = () => {
       saveWishList.push(perBooks);
       const localBook = JSON.stringify(saveWishList);
       localStorage.setItem("wishListBooks", localBook);
-      toast.info("one book added!");
+      toast("one book added!");
     }
   };
 
@@ -94,18 +92,18 @@ const BookDetails = () => {
           </div>
           <hr />
           <p className="font-semibold">
-            Number of Pages :{" "}
+            Number of Pages :
             <span className="text-lime-500">{totalPages}</span>
           </p>
           <p className="font-semibold">
-            Publisher: <span className="text-lime-500">{publisher}</span>{" "}
+            Publisher: <span className="text-lime-500">{publisher}</span>
           </p>
           <p className="font-semibold">
-            year of publish :{" "}
-            <span className="text-lime-500">{yearOfPublishing}</span>{" "}
+            year of publish :
+            <span className="text-lime-500">{yearOfPublishing}</span>
           </p>
           <p className="font-semibold">
-            rateing : <span className="text-lime-500">{rating}</span>{" "}
+            rateing : <span className="text-lime-500">{rating}</span>
           </p>
 
           <div className="card-actions justify-end">

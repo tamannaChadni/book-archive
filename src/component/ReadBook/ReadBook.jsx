@@ -7,7 +7,6 @@ import { LuMapPin } from "react-icons/lu";
 import { MdOutlinePeopleOutline } from "react-icons/md";
 
 const ReadBook = ({ read }) => {
-  
   const {
     bookName,
     author,
@@ -23,25 +22,24 @@ const ReadBook = ({ read }) => {
     <div>
       <div className="card card-side bg-base-100 shadow-xl my-5">
         <figure>
-          <img src={image} alt="Movie" />
+          <img src={image} alt="book" />
         </figure>
         <div className="card-body">
           <h2 className="card-title font-bold">
-            Title : <span className=" text-lime-400">{bookName}</span>{" "}
+            Title : <span className=" text-lime-400">{bookName}</span>
           </h2>
           <div className=" font-medium flex gap-2 items-center">
             <MdOutlinePeopleOutline />
-            Author : <span className=" text-lime-400">{author}</span>{" "}
+            Author : <span className=" text-lime-400">{author}</span>
           </div>
           {/* <p>Tag : </p> */}
           <div className="font-medium flex gap-2 items-center">
-            {" "}
             <LuMapPin />
             Year : <span className=" text-lime-400">{yearOfPublishing}</span>
           </div>
           <div className="font-medium flex gap-2 items-center">
             <SiAffinitypublisher />
-            Publisher :<span className=" text-lime-400">{publisher}</span>{" "}
+            Publisher :<span className=" text-lime-400">{publisher}</span>
           </div>
           <div className="font-medium flex gap-2 items-center">
             <MdOutlineContactPage />
@@ -55,7 +53,10 @@ const ReadBook = ({ read }) => {
             <button className="btn  bg-orange-300 text-white">
               Rating : {rating}
             </button>
-            <Link to="/book/:bookId" className="btn bg-lime-300 text-white ">
+            <Link
+              to={"/book/" + read.bookId}
+              className="btn bg-lime-300 text-white "
+            >
               View Detail
             </Link>
           </div>

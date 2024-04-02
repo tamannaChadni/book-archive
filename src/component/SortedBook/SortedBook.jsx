@@ -1,39 +1,36 @@
 import React, { useEffect, useState } from "react";
 import ReadBook from "../ReadBook/ReadBook";
-import { Link } from "react-router-dom";
-import { useLoaderData } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Wishlist from "../Wishlist/Wishlist";
 
 const SortedBook = () => {
-  const books = useLoaderData();
-  const bookDescending = [...books].sort((a, b) => b.bookIdd - a.bookId);
-  console.log("kkkk", bookDescending);
-
   const [readBooked, setReadBooked] = useState([]);
   const [wishListBookes, setWishListBookes] = useState([]);
-  const [tabIndex, setTabIndex] = useState(0);
+
+  // console.log(readBooked,wishListBookes);
+
+  // const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
     const getReadBook = JSON.parse(localStorage.getItem("readBooks")) || [];
     setReadBooked(getReadBook);
+
     const getWishListBook =
       JSON.parse(localStorage.getItem("wishListBooks")) || [];
     setWishListBookes(getWishListBook);
   }, []);
 
+  // sorting
   const handleRatingSort = () => {
     setReadBooked([...readBooked].sort((a, b) => b.rating - a.rating));
-    // setReadBooked(numAscending);
   };
   const handleNumOfPagesSort = () => {
     setReadBooked([...readBooked].sort((a, b) => b.totalPages - a.totalPages));
-    // setReadBooked(numAscending);
   };
   const handlePubYearSort = () => {
     setReadBooked(
       [...readBooked].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing)
     );
-    // setReadBooked(numAscending);
   };
 
   return (
@@ -70,63 +67,46 @@ const SortedBook = () => {
       </div>
       {/* button */}
       {/* tab */}
-      <div className="mt-7">
-        <div className="flex items-center overflow-x-auto overflow-y-hidden sm:justify-start flex-nowrap ">
-          <Link
-            to={`/listed-book/readbook`}
-            onClick={() => setTabIndex(0)}
-            className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
-              tabIndex === 0 ? "border border-b-0" : "border-b"
-            }  `}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-            >
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span>Read Book</span>
-          </Link>
-          <Link
-            to={`/listed-book/wishlist`}
-            onClick={() => setTabIndex(1)}
-            className={`flex cursor-pointer items-center flex-shrink-0 px-5 py-3 space-x-2 ${
-              tabIndex === 1 ? "border border-b-0" : "border-b"
-            }  `}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-            >
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-            <span>Wishlist</span>
-          </Link>
+      {/* readbook */}
+
+      <div role="tablist" className="tabs tabs-lifted">
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab"
+          aria-label="ReadBook"
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-b-base-300 rounded-box p-6"
+        >
+          {readBooked.map((read, idx) => (
+            <ReadBook key={idx} read={read}></ReadBook>
+          ))}
+        </div>
+
+        <input
+          type="radio"
+          name="my_tabs_2"
+          role="tab"
+          className="tab"
+          aria-label="Wishlist"
+          checked
+        />
+        <div
+          role="tabpanel"
+          className="tab-content bg-base-100 border-b-base-300 rounded-box p-6"
+        >
+          {wishListBookes.map((wish, idx) => (
+            <Wishlist key={idx} wish={wish}></Wishlist>
+          ))}
         </div>
       </div>
-      {/* tab */}
-      <div className="mt-4">
-        {readBooked.map((read, idx) => (
-          <ReadBook key={idx} read={read}></ReadBook>
-        ))}
 
-        {wishListBookes.map((wish, idx) => (
-          <Wishlist key={idx} wish={wish}></Wishlist>
-        ))}
-      </div>
+      
+      
+      {/* tab */}
     </div>
   );
 };

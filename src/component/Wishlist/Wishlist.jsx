@@ -54,7 +54,7 @@ const Wishlist = ({wish}) => {
                 <button className="btn  bg-orange-300 text-white">
                   Rating : {rating}
                 </button>
-                <Link to="/book/:bookId" className="btn bg-lime-300 text-white ">
+                <Link to={"/book/" + wish.bookId} className="btn bg-lime-300 text-white ">
                   View Detail
                 </Link>
               </div>
